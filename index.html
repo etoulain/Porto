@@ -157,6 +157,8 @@
   .abody .anote{font-size:12px;color:var(--ink-soft);margin:2px 0 4px;line-height:1.4;}
   .abody .asite{display:inline-flex;align-items:center;gap:3px;font-size:11.5px;font-weight:700;color:var(--azulejo);text-decoration:none;}
   .abody .alinks{display:flex;gap:14px;flex-wrap:wrap;margin-top:2px;}
+  .moveselect{margin-top:9px;font-size:11.5px;font-family:var(--font-body);color:var(--ink-soft);
+    border:1px solid var(--line);border-radius:7px;padding:5px 7px;background:#fff;max-width:100%;}
   .aor{text-align:center;font-size:11px;font-weight:700;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.05em;padding:2px 0;}
 
   .placerow{display:flex;flex-direction:column;gap:7px;margin-top:8px;}
@@ -512,7 +514,7 @@
 </footer>
 
 <script>
-const DAYS = [
+const DAYS_BASE = [
   {
     date:"2026-07-04", dow:"Sat", label:"Départ: Home → Porto", loc:"Porto",
     blocks:[
@@ -654,6 +656,105 @@ const DAYS = [
   }
 ];
 
+// --- Move-a-suggestion-to-another-day support ---
+var MOVES = {};
+try{ MOVES = JSON.parse(localStorage.getItem('tripMoves') || '{}'); }catch(e){ MOVES = {}; }
+function saveMoves(){ try{ localStorage.setItem('tripMoves', JSON.stringify(MOVES)); }catch(e){} }
+
+function buildDays(){
+  var days = DAYS_BASE.map(function(d, di){
+    return {
+      date: d.date, dow: d.dow, label: d.label, loc: d.loc, transit: d.transit,
+      blocks: d.blocks.map(function(b, bi){
+        var nb = Object.assign({}, b);
+        nb._id = d.date + '-b' + bi;
+        if(b.items){
+          nb.items = b.items.map(function(it, ii){
+            if(it && typeof it === 'object'){
+              var nit = Object.assign({}, it);
+              nit._id = d.date + '-b' + bi + '-i' + ii;
+              return nit;
+            }
+            return it;
+          });
+        }
+        return nb;
+      })
+    };
+  });
+
+  var byDate = {};
+  days.forEach(function(d){ byDate[d.date] = d; });
+
+  var toMove = [];
+  days.forEach(function(d){
+    d.blocks.forEach(function(b){
+      if(b.type === 'food' && MOVES[b._id] && MOVES[b._id] !== d.date){
+        toMove.push({type:'block', unit:b, fromDay:d, targetDate:MOVES[b._id]});
+      }
+      if(b.items){
+        b.items.forEach(function(it){
+          if(it && typeof it === 'object' && MOVES[it._id] && MOVES[it._id] !== d.date){
+            toMove.push({type:'item', unit:it, fromDay:d, block:b, targetDate:MOVES[it._id]});
+          }
+        });
+      }
+    });
+  });
+
+  toMove.forEach(function(m){
+    if(m.type === 'block'){
+      m.fromDay.blocks = m.fromDay.blocks.filter(function(b){ return b !== m.unit; });
+    } else {
+      m.block.items = m.block.items.filter(function(it){ return it !== m.unit; });
+    }
+  });
+
+  toMove.forEach(function(m){
+    var target = byDate[m.targetDate];
+    if(!target) return;
+    if(m.type === 'block'){
+      target.blocks.push(m.unit);
+    } else {
+      var doBlock = target.blocks.filter(function(b){ return b.type === 'do'; })[0];
+      if(!doBlock){
+        doBlock = {type:'do', title:'Sightseeing', items:[], _id: target.date + '-b-moved'};
+        target.blocks.push(doBlock);
+      }
+      doBlock.items.push(m.unit);
+    }
+  });
+
+  return days;
+}
+
+var DAYS = buildDays();
+
+function moveSelectHTML(id){
+  if(!id) return '';
+  var h = '<select class="moveselect" data-id="' + id + '">';
+  h += '<option value="">Move to…</option>';
+  DAYS.forEach(function(dd){
+    var dateObj = new Date(dd.date + 'T00:00:00');
+    var monthName = dateObj.toLocaleDateString('en-US', {month:'short'});
+    h += '<option value="' + dd.date + '">' + dd.dow + ' ' + monthName + ' ' + dayOfMonth(dd.date) + '</option>';
+  });
+  h += '</select>';
+  return h;
+}
+
+document.addEventListener('change', function(e){
+  if(!e.target.classList || !e.target.classList.contains('moveselect')) return;
+  var id = e.target.getAttribute('data-id');
+  var target = e.target.value;
+  if(!target) return;
+  MOVES[id] = target;
+  saveMoves();
+  DAYS = buildDays();
+  renderStrip();
+  renderDay();
+});
+
 const ICONS = {
   stay:'<path d="M3 18v-6a2 2 0 0 1 2-2h5a2 2 0 0 1 2 2v2"/><path d="M3 12h18v6"/><path d="M12 10h7a2 2 0 0 1 2 2v2"/><path d="M3 18v2"/><path d="M21 18v2"/><circle cx="7" cy="8" r="1.4" fill="currentColor" stroke="none"/>',
   food:'<path d="M6 2v7a2 2 0 0 0 4 0V2"/><path d="M8 9v13"/><path d="M17 2c-1.4 0-2 1.6-2 3.5v4c0 1.4.7 2.3 2 2.5V22"/>',
@@ -706,6 +807,7 @@ function attractionHTML(a){
   h += '<a class="asite" href="' + mapsUrl + '" target="_blank" rel="noopener">' + icon('pin') + ' Directions</a>';
   if(a.url) h += '<a class="asite" href="' + a.url + '" target="_blank" rel="noopener">' + icon('link') + ' More info / tickets</a>';
   h += '</div>';
+  h += moveSelectHTML(a._id);
   h += '</div></div>';
   return h;
 }
@@ -748,6 +850,7 @@ function blockHTML(b){
   if(b.phone) btns += '<a class="btn btn-call" href="tel:' + b.phone + '">' + icon('phone') + ' ' + b.phoneLabel + '</a>';
   if(btns) h += '<div class="btnrow">' + btns + '</div>';
   if(b.places) h += placesHTML(b.places);
+  if(b.type === 'food') h += moveSelectHTML(b._id);
   h += '</div>';
   return h;
 }
