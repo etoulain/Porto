@@ -154,6 +154,7 @@
   .abody .aname{font-weight:700;font-size:13.5px;color:var(--ink);}
   .abody .anote{font-size:12px;color:var(--ink-soft);margin:2px 0 4px;line-height:1.4;}
   .abody .asite{display:inline-flex;align-items:center;gap:3px;font-size:11.5px;font-weight:700;color:var(--azulejo);text-decoration:none;}
+  .abody .alinks{display:flex;gap:14px;flex-wrap:wrap;margin-top:2px;}
   .aor{text-align:center;font-size:11px;font-weight:700;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.05em;padding:2px 0;}
 
   .placerow{display:flex;flex-direction:column;gap:7px;margin-top:8px;}
@@ -698,7 +699,11 @@ function attractionHTML(a){
   h += '<div class="aname">' + a.name + '</div>';
   if(a.note) h += '<div class="anote">' + fmtLine(a.note) + '</div>';
   if(a.dog) h += '<span class="dognote">' + a.dog + '</span><br>';
+  var mapsUrl = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(a.mapQuery || a.name);
+  h += '<div class="alinks">';
+  h += '<a class="asite" href="' + mapsUrl + '" target="_blank" rel="noopener">' + icon('pin') + ' Directions</a>';
   if(a.url) h += '<a class="asite" href="' + a.url + '" target="_blank" rel="noopener">' + icon('link') + ' More info / tickets</a>';
+  h += '</div>';
   h += '</div></div>';
   return h;
 }
@@ -989,6 +994,51 @@ renderDay();
     html += '</div></details>';
   });
   document.getElementById('emergencyLocs').innerHTML = html;
+})();
+
+// --- Retrofit static (hand-written) attraction/place markup in Quick Reference ---
+// so it gets the same checkbox + Directions link as the JS-generated day cards.
+(function(){
+  Array.prototype.forEach.call(document.querySelectorAll('.attraction'), function(el){
+    if(el.querySelector('.wentbox')) return;
+    var nameEl = el.querySelector('.aname');
+    var name = nameEl ? nameEl.textContent.trim() : '';
+    var key = 'attr-' + slug(name);
+    if(CHECKED[key]) el.classList.add('visited');
+    var cb = document.createElement('input');
+    cb.type = 'checkbox'; cb.className = 'wentbox'; cb.setAttribute('data-key', key); cb.title = 'We went here';
+    if(CHECKED[key]) cb.checked = true;
+    el.insertBefore(cb, el.firstChild);
+
+    var abody = el.querySelector('.abody');
+    if(abody){
+      var alinks = document.createElement('div');
+      alinks.className = 'alinks';
+      var mapsA = document.createElement('a');
+      mapsA.className = 'asite'; mapsA.target = '_blank'; mapsA.rel = 'noopener';
+      mapsA.href = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(name);
+      mapsA.innerHTML = icon('pin') + ' Directions';
+      alinks.appendChild(mapsA);
+      var existingLink = abody.querySelector('a.asite');
+      if(existingLink) alinks.appendChild(existingLink);
+      abody.appendChild(alinks);
+    }
+  });
+
+  Array.prototype.forEach.call(document.querySelectorAll('.placerow'), function(row){
+    Array.prototype.forEach.call(row.querySelectorAll('a.placechip'), function(a){
+      if(a.parentElement.classList.contains('placechiprow')) return;
+      var key = 'place-' + slug(a.textContent.trim());
+      var wrap = document.createElement('div');
+      wrap.className = 'placechiprow' + (CHECKED[key] ? ' visited' : '');
+      var cb = document.createElement('input');
+      cb.type = 'checkbox'; cb.className = 'wentbox'; cb.setAttribute('data-key', key); cb.title = 'We went here';
+      if(CHECKED[key]) cb.checked = true;
+      a.parentNode.insertBefore(wrap, a);
+      wrap.appendChild(cb);
+      wrap.appendChild(a);
+    });
+  });
 })();
 
 // --- Pronunciation buttons for the Phrases tab ---
