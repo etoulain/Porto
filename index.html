@@ -100,8 +100,6 @@
   .stub.selected .dnum{color:#fff;}
 
   .daytitle{font-family:var(--font-display);font-size:19px;font-weight:700;margin:2px 0 3px;color:var(--azulejo);}
-  .daymap{margin:4px 0 14px;border-radius:12px;overflow:hidden;border:1px solid var(--line);}
-  .daymap iframe{width:100%;height:340px;border:none;display:block;}
   .daytitle .badge-transit{
     display:inline-block;font-family:var(--font-body);font-size:10.5px;font-weight:700;
     color:var(--ochre);border:1px solid var(--ochre);border-radius:8px;padding:1px 7px;margin-left:6px;
@@ -146,9 +144,6 @@
   }
 
   .attraction{display:flex;gap:10px;padding:8px 0;border-bottom:1px dashed var(--line-soft);}
-  .wentbox{width:18px;height:18px;flex:none;margin-top:2px;accent-color:var(--azulejo);cursor:pointer;}
-  .attraction.visited .aname{text-decoration:line-through;opacity:0.55;}
-  .attraction.visited .anote{opacity:0.55;}
   .attraction:last-child{border-bottom:none;}
   .athumb{width:56px;height:56px;border-radius:8px;background:var(--line-soft);flex:none;overflow:hidden;}
   .athumb img{width:100%;height:100%;object-fit:cover;display:block;}
@@ -156,14 +151,9 @@
   .abody .aname{font-weight:700;font-size:13.5px;color:var(--ink);}
   .abody .anote{font-size:12px;color:var(--ink-soft);margin:2px 0 4px;line-height:1.4;}
   .abody .asite{display:inline-flex;align-items:center;gap:3px;font-size:11.5px;font-weight:700;color:var(--azulejo);text-decoration:none;}
-  .abody .alinks{display:flex;gap:14px;flex-wrap:wrap;margin-top:2px;}
-  .moveselect{margin-top:9px;font-size:11.5px;font-family:var(--font-body);color:var(--ink-soft);
-    border:1px solid var(--line);border-radius:7px;padding:5px 7px;background:#fff;max-width:100%;}
   .aor{text-align:center;font-size:11px;font-weight:700;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.05em;padding:2px 0;}
 
-  .placerow{display:flex;flex-direction:column;gap:7px;margin-top:8px;}
-  .placechiprow{display:flex;align-items:center;gap:8px;}
-  .placechiprow.visited .placechip{text-decoration:line-through;opacity:0.55;}
+  .placerow{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
   .placechip{display:inline-flex;align-items:center;gap:4px;font-size:11.5px;font-weight:700;
     color:var(--azulejo);background:var(--card);border:1px solid var(--line);padding:4px 9px;
     border-radius:8px;text-decoration:none;}
@@ -236,13 +226,9 @@
 
   .phraserow{padding:9px 0;border-bottom:1px dashed var(--line-soft);}
   .phraserow:last-child{border-bottom:none;}
-  .phraserow .pt{font-weight:700;font-size:15px;color:var(--ink);display:flex;align-items:center;gap:7px;flex-wrap:wrap;}
+  .phraserow .pt{font-weight:700;font-size:15px;color:var(--ink);}
   .phraserow .en{font-size:12.5px;color:var(--ink-soft);margin-top:1px;}
   .phraserow .phon{font-family:var(--font-mono);font-size:11.5px;color:var(--azulejo-2);margin-top:3px;font-style:italic;}
-  .speakbtn{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;flex:none;
-    border:none;border-radius:50%;background:var(--ochre-soft);color:var(--azulejo);padding:0;cursor:pointer;}
-  .speakbtn svg.ic{width:14px;height:14px;}
-  .speakbtn.playing{background:var(--ochre);color:#fff;}
 
   .emcall{
     display:flex;gap:8px;margin-bottom:14px;
@@ -331,8 +317,7 @@
     <div class="sectiontitle"><span class="sflag"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l7-2 4-8 2 1-2 7 6 1 2-2 1.5.7-1.5 3-8 1-3 5-2-.5 1.5-3.5-4.5-1z"/></svg></span>Flights &amp; stays</div>
     <table class="ref">
       <tr><th>Dates</th><th>Where</th><th>Check-in / out</th></tr>
-      <tr><td>Sat Jul 4</td><td>Home → CDG → OPO<br><span style="color:var(--ink-soft)">AF1516, 8:50–10:05 PM (T2F)<br>seats 7D/7E/7F</span></td><td>—</td></tr>
-      <tr><td>Jul 4–13</td><td><b>Rental car</b> — Budget, OPO (Maia)<br><span style="color:var(--ink-soft)">Booking 4753-3103-FR-2 · Group L, Toyota Yaris Cross or similar<br>9 days · 284.27 EUR · Quick Pass checkout<br>Contract: SOVIAL LDA</span></td><td>Voucher: pickup Sat 17:30 · return Mon 16:30 — <b>doesn't match your flight times, see notes</b></td></tr>
+      <tr><td>Sat Jul 4</td><td>Home → CDG → OPO<br><span style="color:var(--ink-soft)">AF1470, 4:50–6:15 PM<br>seats 12D/12C/12F</span></td><td>—</td></tr>
       <tr><td>Jul 4–8</td><td><b>Ibis Bolhão</b><br><span style="color:var(--ink-soft)">R. de Sá da Bandeira 567, 4000-437 Porto</span></td><td>In 14:00 · Out Jul 8, 12:00</td></tr>
       <tr><td>Jul 8–10</td><td><b>Cascais Airbnb</b> (Petter)<br><span style="color:var(--ink-soft)">Estrada Fonte Velha 1063, Areia, Cascais</span></td><td>In Jul 8, 16:00 · Out Jul 10, 11:00</td></tr>
       <tr><td>Jul 10–11</td><td><b>Simplicity House</b> (Deniz)<br><span style="color:var(--ink-soft)">R. das Alminhas 290, 2425 Souto da Carpalhosa</span></td><td>In Jul 10, 15:00 · Out Jul 11, 11:00</td></tr>
@@ -514,15 +499,14 @@
 </footer>
 
 <script>
-const DAYS_BASE = [
+const DAYS = [
   {
     date:"2026-07-04", dow:"Sat", label:"Départ: Home → Porto", loc:"Porto",
     blocks:[
       {type:"move", title:"Home → CDG", text:"Air France needs staffed-counter check-in with a pet in the cabin, so build in extra buffer.",
-        list:["Drive time normally ~35–45 min, budget up to an hour for Saturday traffic","Aim to be at the airport by 6:30 PM (2h20 before departure)","Leave home by 5:30 PM at the latest, earlier with a child and dog in tow","Have the dog's paperwork (EU pet passport, rabies vaccination) accessible — checked at the counter, not security"],
+        list:["Drive time normally ~35–45 min, budget up to an hour for Saturday traffic","Aim to be at the airport by 2:30 PM (2h20 before departure)","Leave home by 1:30 PM at the latest, earlier with a child and dog in tow","Have the dog's paperwork (EU pet passport, rabies vaccination) accessible — checked at the counter, not security"],
         map:"https://www.google.com/maps/dir/?api=1&origin=72+Rond-Point+du+Pont+de+Sevres,+92100+Boulogne-Billancourt&destination=Paris+Charles+de+Gaulle+Airport&travelmode=driving"},
-      {type:"note", title:"Flight AF1516", text:"CDG (Terminal 2F) → OPO, booking ref ZTIH3W, departs 8:50 PM, arrives 10:05 PM. Seats 7D, 7E, 7F."},
-      {type:"note", title:"Pick up rental car", text:"Budget, Maia / OPO airport. Booking 4753-3103-FR-2, under Chaza Toulain. Group L (Toyota Yaris Cross or similar), 9-day rental, 284.27 EUR, contract with SOVIAL LDA. Use Quick Pass to skip the counter line and go straight to the car. Voucher lists a 5:30 PM pickup, but you land at 10:05 PM — call Budget or update the booking with your flight number (AF1516) so they hold the car for the later arrival, rather than risk it being released."},
+      {type:"note", title:"Flight AF1470", text:"CDG → OPO, booking ref ZTIH3W, departs 4:50 PM, arrives 6:15 PM. Seats 12D, 12C, 12F."},
       {type:"stay", title:"Ibis Porto Centro Mercado do Bolhão", text:"Check-in from 14:00.", addr:"R. de Sá da Bandeira 567, 4000-437 Porto", phone:"+351227669100", phoneLabel:"+351 22 766 9100",
         map:"https://www.google.com/maps/dir/?api=1&origin=Porto+Airport&destination=R.+de+Sa+da+Bandeira+567,+4000-437+Porto&travelmode=driving", mapLabel:"OPO → Hotel"},
       {type:"food", title:"Casa Guedes", text:"Keep the evening light after travel — Mercado do Bolhão is right by the hotel. Dog-friendly, classic pernil sandwich.", places:[{name:"Casa Guedes", q:"Casa Guedes Porto"}]}
@@ -540,7 +524,6 @@ const DAYS_BASE = [
         {name:"Porto Cathedral (Sé)", note:"Plus the Pillory and Terreiro da Sé viewpoint right outside.", wiki:"Porto Cathedral", url:"https://www.diocese-porto.pt/pt/catedral-do-porto/"},
         {name:"Cais da Estiva", note:"Ribeira riverfront, classic Dom Luís I Bridge view. [FABIEN]"}
       ]},
-      {type:"food", title:"Lunch", text:"Taberna dos Mercadores, tucked in Ribeira near the riverfront — cozy and popular for classic Porto dishes (octopus rice, grilled fish). Small and fills up fast, so book ahead or go right at noon.", places:[{name:"Taberna dos Mercadores", q:"Taberna dos Mercadores Porto"}]},
       {type:"food", title:"Dinner", text:"The Door (tapas-style, book ahead) or Garden Balthazar Caffe.", places:[{name:"The Door", q:"The Door restaurant Porto"},{name:"Garden Balthazar Caffe", q:"Garden Balthazar Caffe Porto"}]}
     ]
   },
@@ -554,29 +537,29 @@ const DAYS_BASE = [
         "or",
         {name:"SEA LIFE Porto", note:"Aquarium near the beach.", url:"https://www.visitsealife.com/porto/", dog:"no dogs inside"},
         {name:"Parque da Cidade", note:"Let the dog run in the open lawns.", wiki:"Parque da Cidade do Porto", url:"https://parquecidadedoporto.com/"}
-      ]},
-      {type:"food", title:"Lunch", text:"Restaurante Homem do Leme, right by the beach with a playground next door — easy to combine with the park/SEA LIFE loop and genuinely kid-friendly (burgers, francesinha, grilled options).", places:[{name:"Restaurante Homem do Leme", q:"Restaurante Homem do Leme Porto"}]},
-      {type:"food", title:"Dinner", text:"O Buraco, a long-running, no-frills traditional spot near Mercado do Bolhão — good value, hearty Portuguese home cooking, an easy walk back to the hotel after.", places:[{name:"O Buraco", q:"O Buraco Porto restaurant"}]}
+      ]}
     ]
   },
   {
     date:"2026-07-07", dow:"Tue", label:"Porto: Flex day", loc:"Porto",
     blocks:[
       {type:"note", title:"Flex day + optional Douro dinner cruise", text:"Free morning to revisit a favorite spot or rest. Good night for the Douro river dinner cruise if you'd rather spread your two big evenings across Porto and Gaia — departures leave from the Ribeira dock, a short walk away. Full cruise options are in Quick ref. You can also save this for Sun Jul 12 in Gaia — just pick one. [FABIEN]"},
-      {type:"food", title:"Morning coffee & eggs", text:"the grow — good coffee and a proper egg-forward brunch menu (their shakshuka and egg plates get called out specifically), pet-friendly too. A better fit than a pure coffee-and-pastry spot for a flex-day breakfast.", places:[{name:"the grow", q:"the grow cafe Porto"}]},
-      {type:"food", title:"Lunch", text:"Cantinho do Avillez in Baixa — warm, semi-casual, and genuinely good with a 5yo (simple pasta, grilled chicken, even chicken nuggets on the menu alongside the real Portuguese classics for the adults).", places:[{name:"Cantinho do Avillez", q:"Cantinho do Avillez Porto"}]},
-      {type:"food", title:"Dinner", text:"Café Santiago — a Porto institution for francesinha, if you want to try the city's signature dish before you leave. Casual, central, expect a short wait at peak times.", places:[{name:"Café Santiago", q:"Cafe Santiago Porto francesinha"}]}
+      {type:"food", title:"Morning coffee & eggs", text:"the grow — good coffee and a proper egg-forward brunch menu (their shakshuka and egg plates get called out specifically), pet-friendly too. A better fit than a pure coffee-and-pastry spot for a flex-day breakfast.", places:[{name:"the grow", q:"the grow cafe Porto"}]}
     ]
   },
   {
     date:"2026-07-08", dow:"Wed", label:"Drive: Porto → Cascais", transit:true, loc:"Cascais",
     blocks:[
       {type:"food", title:"Morning coffee, before checkout", text:"My Coffee Porto — a tiny hillside spot with a stunning Douro River view from the terrace, good for a last coffee and pastry before a long drive. It's not really an eggs place though — if you want a proper egg breakfast first, eat at the hotel before checking out, then treat this as a scenic coffee stop on the way.", places:[{name:"My Coffee Porto", q:"My Coffee Porto"}]},
-      {type:"move", title:"Ibis Bolhão → Cascais Airbnb", text:"Check out by 12:00. Drive south — ~3h driving, more like 4–4.5h total with the lunch stop.",
+      {type:"do", title:"Scenic stop: Aveiro", text:"About 1h from Porto, easy ~15-20 min detour off the route. Portugal's \"Little Venice\" — colorful canals and moliceiro boats. A narrated 40-45 min boat cruise runs roughly €13-15/adult, €6-7/kid, a nice stretch-the-legs stop early in the drive, well before Mealhada.", items:[
+        {name:"Aveiro", note:"Canal cruise departs from the Moliceiros Pier area — several operators, boats leave regularly.", wiki:"Aveiro", url:"https://en.wikipedia.org/wiki/Aveiro"}
+      ], places:[{name:"Moliceiros Pier", q:"Moliceiros Pier Aveiro"}]},
+      {type:"move", title:"Ibis Bolhão → Cascais Airbnb", text:"Check out by 12:00. Drive south — ~3h driving, more like 5-5.5h total once you add the Aveiro stop and Mealhada lunch.",
         list:["Lunch stop: Mealhada for leitão (roast suckling pig), roughly halfway. Your friend's pick: Nova Casa dos Leitões [FABIEN]"],
         phone:"+351231518025", phoneLabel:"+351 231 518 025",
         places:[{name:"Nova Casa dos Leitões", q:"Nova Casa dos Leitoes Mealhada"}],
-        map:"https://www.google.com/maps/dir/?api=1&origin=R.+de+Sa+da+Bandeira+567,+4000-437+Porto&destination=Estrada+Fonte+Velha+1063,+Cascais&waypoints=Mealhada,+Portugal&travelmode=driving", mapLabel:"Directions via Mealhada"},
+        map:"https://www.google.com/maps/dir/?api=1&origin=R.+de+Sa+da+Bandeira+567,+4000-437+Porto&destination=Estrada+Fonte+Velha+1063,+Cascais&waypoints=Aveiro,+Portugal|Mealhada,+Portugal&travelmode=driving", mapLabel:"Directions via Aveiro & Mealhada"},
+      {type:"note", title:"Want a bigger detour instead?", text:"Two alternatives if you'd rather trade time for a different stop — pick at most one, the day is already long: (1) Coimbra — Portugal's great historic university city, but a proper visit is 2+ hours; for just the view, Hell Valley Viewpoint gives the classic skyline-over-the-river shot as a 10-15 min stop with no need to park downtown. (2) Óbidos — a small, perfectly preserved medieval walled town near the end of the drive, with castle walls you can walk for great views. Caution: the walls have no railing in places, a real fall risk with a 5-year-old — would need close hand-holding, not free exploring. Adds ~25-30 min detour each way plus walking time.", places:[{name:"Hell Valley Viewpoint, Coimbra", q:"Hell Valley Viewpoint Coimbra"},{name:"Óbidos Castle", q:"Castelo de Obidos"}]},
       {type:"stay", title:"Airbnb — Cascais (hosted by Petter)", text:"Check-in from 4:00 PM. Petter recommends using GPS coordinates rather than the address: 38°43'49.2\"N 9°27'44.6\"W — look for an open black metal gate with an uphill gravel/dirt road to the parking area. He'll be there in person for check-in.",
         addr:"Estrada Fonte Velha 1063, Pinheiro Bravo, Areia, Cascais"},
       {type:"food", title:"Evening", text:"Sunset walk at Boca do Inferno, dinner at A Nova Estrela (family-run, kid-friendly) or Taberna Económica de Cascais.", places:[{name:"Boca do Inferno", q:"Boca do Inferno Cascais"},{name:"A Nova Estrela", q:"A Nova Estrela Cascais"},{name:"Taberna Económica", q:"Taberna Economica de Cascais"}]}
@@ -622,7 +605,6 @@ const DAYS_BASE = [
         list:["Batalha Monastery — UNESCO Gothic monastery, free-to-enter chapel, worth the ~15-min detour","Optional: Nazaré, famous cliffside beach town, ~30 min further (the giant waves are a winter phenomenon)"],
         map:"https://www.google.com/maps/dir/?api=1&origin=R.+das+Alminhas+290,+2425+Souto+da+Carpalhosa&destination=R.+Martir+Sao+Sebastiao+247,+4400-499+Vila+Nova+de+Gaia&waypoints=Batalha+Monastery&travelmode=driving", mapLabel:"Directions via Batalha Monastery"},
       {type:"stay", title:"Ibis Porto Gaia", text:"Arrive early-to-mid afternoon. Check-in from 14:00.", addr:"R. Mártir São Sebastião 247, 4400-499 Vila Nova de Gaia"},
-      {type:"food", title:"Lunch, on arrival", text:"Mercado Beira-Rio — a riverside food court in Gaia with a mix of stalls (pizza, seafood, Portuguese classics), easy and low-key for a travel day, everyone picks their own thing.", places:[{name:"Mercado Beira-Rio", q:"Mercado Beira-Rio Vila Nova de Gaia"}]},
       {type:"food", title:"Dinner", text:"Riverside at Tempêro D'Maria or Sancho Panza (reliably open in the 4–7pm gap when many places close).", places:[{name:"Tempêro D'Maria", q:"Tempero D Maria Vila Nova de Gaia"},{name:"Sancho Panza", q:"Sancho Panza Vila Nova de Gaia"}]}
     ]
   },
@@ -634,7 +616,6 @@ const DAYS_BASE = [
         {name:"Taylor's Port", note:"Self-guided audio tour, flexible pace with a 5yo.", wiki:"Taylor's (wine)", url:"https://www.taylor.pt/en/visit-taylors/port-cellars", dog:"dogs generally not allowed"},
         {name:"Caves Ferreira", note:"Specifically family-friendly, kids often free."}
       ]},
-      {type:"food", title:"Lunch", text:"Vinum, at Graham's Port Lodge — sweeping views over Porto and the Douro, and a menu that easily stretches from a lighter lunch to a full sit-down meal. Easy to combine with the cellar visits since it's right there.", places:[{name:"Vinum Restaurant", q:"Vinum Restaurant Graham's Vila Nova de Gaia"}]},
       {type:"do", title:"Pink Palace, at WOW", text:"Offbeat add-on if you're up for something playful: 11 all-pink rooms in the WOW cultural district, built around 5 rosé tastings (kids get juice instead), plus a giant pink ball pit and a vintage pink Cadillac photo op. More of a fun, adult-oriented tasting experience than a kids' activity, but the museum and photo rooms work fine as a family visit.", items:[
         {name:"Pink Palace", note:"Rua do Choupelo 39, 4400-088 Vila Nova de Gaia. Open Sun–Thu 10:00–19:00, Fri–Sat 10:00–22:00 (last entry).", url:"https://www.wow.pt/en/museums/pink-palace"}
       ]},
@@ -648,112 +629,13 @@ const DAYS_BASE = [
       {type:"food", title:"Last coffee, to go", text:"Checkout's at noon and you need to be leaving for the airport by ~1:15–1:30 PM (see below), so there's only a narrow window — grab a coffee to go rather than planning a sit-down stop. 7g Roaster is closest to the hotel if you want proper beans on the way out.", places:[{name:"7g Roaster", q:"7g Roaster Vila Nova de Gaia"}]},
       {type:"move", title:"Ibis Porto Gaia → OPO", text:"Check out by 12:00. OPO is ~15–20 min from the hotel by car.",
         map:"https://www.google.com/maps/dir/?api=1&origin=R.+Martir+Sao+Sebastiao+247,+4400-499+Vila+Nova+de+Gaia&destination=Porto+Airport&travelmode=driving"},
-      {type:"note", title:"Return the rental car with buffer", text:"Same staffed-counter logic for the dog. Aim to be at the airport by 2:00 PM — leave Gaia (car already returned) by around 1:15–1:30 PM. Note: the booking voucher lists a 4:30 PM return, but your flight (AF1529) departs at 4:20 PM — that's the voucher's default time, not a real constraint, so ignore it and return the car on the earlier schedule above. Worth updating the reservation itself so it doesn't flag as a late/no-show return."},
+      {type:"note", title:"Return the rental car with buffer", text:"Same staffed-counter logic for the dog. Aim to be at the airport by 2:00 PM — leave Gaia (car already returned) by around 1:15–1:30 PM."},
       {type:"note", title:"Flight AF1529", text:"OPO → CDG, departs 4:20 PM, arrives 7:30 PM at Terminal 2F. Seats 12D, 12E, 12F."},
       {type:"move", title:"CDG → Home", text:"~35–45 min without traffic.",
         map:"https://www.google.com/maps/dir/?api=1&origin=Paris+Charles+de+Gaulle+Airport&destination=72+Rond-Point+du+Pont+de+Sevres,+92100+Boulogne-Billancourt&travelmode=driving"}
     ]
   }
 ];
-
-// --- Move-a-suggestion-to-another-day support ---
-var MOVES = {};
-try{ MOVES = JSON.parse(localStorage.getItem('tripMoves') || '{}'); }catch(e){ MOVES = {}; }
-function saveMoves(){ try{ localStorage.setItem('tripMoves', JSON.stringify(MOVES)); }catch(e){} }
-
-function buildDays(){
-  var days = DAYS_BASE.map(function(d, di){
-    return {
-      date: d.date, dow: d.dow, label: d.label, loc: d.loc, transit: d.transit,
-      blocks: d.blocks.map(function(b, bi){
-        var nb = Object.assign({}, b);
-        nb._id = d.date + '-b' + bi;
-        if(b.items){
-          nb.items = b.items.map(function(it, ii){
-            if(it && typeof it === 'object'){
-              var nit = Object.assign({}, it);
-              nit._id = d.date + '-b' + bi + '-i' + ii;
-              return nit;
-            }
-            return it;
-          });
-        }
-        return nb;
-      })
-    };
-  });
-
-  var byDate = {};
-  days.forEach(function(d){ byDate[d.date] = d; });
-
-  var toMove = [];
-  days.forEach(function(d){
-    d.blocks.forEach(function(b){
-      if(b.type === 'food' && MOVES[b._id] && MOVES[b._id] !== d.date){
-        toMove.push({type:'block', unit:b, fromDay:d, targetDate:MOVES[b._id]});
-      }
-      if(b.items){
-        b.items.forEach(function(it){
-          if(it && typeof it === 'object' && MOVES[it._id] && MOVES[it._id] !== d.date){
-            toMove.push({type:'item', unit:it, fromDay:d, block:b, targetDate:MOVES[it._id]});
-          }
-        });
-      }
-    });
-  });
-
-  toMove.forEach(function(m){
-    if(m.type === 'block'){
-      m.fromDay.blocks = m.fromDay.blocks.filter(function(b){ return b !== m.unit; });
-    } else {
-      m.block.items = m.block.items.filter(function(it){ return it !== m.unit; });
-    }
-  });
-
-  toMove.forEach(function(m){
-    var target = byDate[m.targetDate];
-    if(!target) return;
-    if(m.type === 'block'){
-      target.blocks.push(m.unit);
-    } else {
-      var doBlock = target.blocks.filter(function(b){ return b.type === 'do'; })[0];
-      if(!doBlock){
-        doBlock = {type:'do', title:'Sightseeing', items:[], _id: target.date + '-b-moved'};
-        target.blocks.push(doBlock);
-      }
-      doBlock.items.push(m.unit);
-    }
-  });
-
-  return days;
-}
-
-var DAYS = buildDays();
-
-function moveSelectHTML(id){
-  if(!id) return '';
-  var h = '<select class="moveselect" data-id="' + id + '">';
-  h += '<option value="">Move to…</option>';
-  DAYS.forEach(function(dd){
-    var dateObj = new Date(dd.date + 'T00:00:00');
-    var monthName = dateObj.toLocaleDateString('en-US', {month:'short'});
-    h += '<option value="' + dd.date + '">' + dd.dow + ' ' + monthName + ' ' + dayOfMonth(dd.date) + '</option>';
-  });
-  h += '</select>';
-  return h;
-}
-
-document.addEventListener('change', function(e){
-  if(!e.target.classList || !e.target.classList.contains('moveselect')) return;
-  var id = e.target.getAttribute('data-id');
-  var target = e.target.value;
-  if(!target) return;
-  MOVES[id] = target;
-  saveMoves();
-  DAYS = buildDays();
-  renderStrip();
-  renderDay();
-});
 
 const ICONS = {
   stay:'<path d="M3 18v-6a2 2 0 0 1 2-2h5a2 2 0 0 1 2 2v2"/><path d="M3 12h18v6"/><path d="M12 10h7a2 2 0 0 1 2 2v2"/><path d="M3 18v2"/><path d="M21 18v2"/><circle cx="7" cy="8" r="1.4" fill="currentColor" stroke="none"/>',
@@ -765,8 +647,7 @@ const ICONS = {
   phone:'<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/>',
   link:'<path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1.3 1.3"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1.3-1.3"/>',
   plane:'<path d="M3 12l7-2 4-8 2 1-2 7 6 1 2-2 1.5.7-1.5 3-8 1-3 5-2-.5 1.5-3.5-4.5-1z"/>',
-  check:'<path d="M4 7h4"/><path d="M4 12h4"/><path d="M4 17h4"/><path d="M11 7h9"/><path d="M11 12h9"/><path d="M11 17h9"/>',
-  speaker:'<path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 6a9 9 0 0 1 0 12"/>'
+  check:'<path d="M4 7h4"/><path d="M4 12h4"/><path d="M4 17h4"/><path d="M11 7h9"/><path d="M11 12h9"/><path d="M11 17h9"/>'
 };
 function icon(name, extraClass){
   return '<svg class="ic' + (extraClass ? ' ' + extraClass : '') + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' + (ICONS[name] || '') + '</svg>';
@@ -774,40 +655,17 @@ function icon(name, extraClass){
 
 const LABEL = {stay:"Stay", food:"Food", move:"On the road", note:"Note", do:"Do"};
 
-function slug(s){ return (s || '').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,''); }
-
-var CHECKED = {};
-try{ CHECKED = JSON.parse(localStorage.getItem('tripChecked') || '{}'); }catch(e){ CHECKED = {}; }
-function saveChecked(){ try{ localStorage.setItem('tripChecked', JSON.stringify(CHECKED)); }catch(e){} }
-document.addEventListener('change', function(e){
-  if(!e.target.classList || !e.target.classList.contains('wentbox')) return;
-  var key = e.target.getAttribute('data-key');
-  CHECKED[key] = e.target.checked;
-  saveChecked();
-  var row = e.target.closest('.attraction') || e.target.closest('.placechiprow');
-  if(row) row.classList.toggle('visited', e.target.checked);
-});
-
 function fmtLine(s){
   return s.replace(/\[FABIEN\]/g, '<span class="fabien">Fabien</span>');
 }
 
 function attractionHTML(a){
-  var key = 'attr-' + slug(a.name);
-  var checked = CHECKED[key] ? ' checked' : '';
-  var visited = CHECKED[key] ? ' visited' : '';
-  var h = '<div class="attraction' + visited + '" data-wiki="' + (a.wiki || '').replace(/"/g,'') + '">';
-  h += '<input type="checkbox" class="wentbox" data-key="' + key + '" title="We went here"' + checked + '>';
+  var h = '<div class="attraction" data-wiki="' + (a.wiki || '').replace(/"/g,'') + '">';
   h += '<div class="athumb"></div><div class="abody">';
   h += '<div class="aname">' + a.name + '</div>';
   if(a.note) h += '<div class="anote">' + fmtLine(a.note) + '</div>';
   if(a.dog) h += '<span class="dognote">' + a.dog + '</span><br>';
-  var mapsUrl = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(a.mapQuery || a.name);
-  h += '<div class="alinks">';
-  h += '<a class="asite" href="' + mapsUrl + '" target="_blank" rel="noopener">' + icon('pin') + ' Directions</a>';
   if(a.url) h += '<a class="asite" href="' + a.url + '" target="_blank" rel="noopener">' + icon('link') + ' More info / tickets</a>';
-  h += '</div>';
-  h += moveSelectHTML(a._id);
   h += '</div></div>';
   return h;
 }
@@ -815,14 +673,8 @@ function attractionHTML(a){
 function placesHTML(places){
   var h = '<div class="placerow">';
   places.forEach(function(p){
-    var key = 'place-' + slug(p.name);
-    var checked = CHECKED[key] ? ' checked' : '';
-    var visited = CHECKED[key] ? ' visited' : '';
     var url = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(p.q);
-    h += '<div class="placechiprow' + visited + '">';
-    h += '<input type="checkbox" class="wentbox" data-key="' + key + '" title="We went here"' + checked + '>';
     h += '<a class="placechip" href="' + url + '" target="_blank" rel="noopener">' + icon('pin') + ' ' + p.name + '</a>';
-    h += '</div>';
   });
   h += '</div>';
   return h;
@@ -850,7 +702,6 @@ function blockHTML(b){
   if(b.phone) btns += '<a class="btn btn-call" href="tel:' + b.phone + '">' + icon('phone') + ' ' + b.phoneLabel + '</a>';
   if(btns) h += '<div class="btnrow">' + btns + '</div>';
   if(b.places) h += placesHTML(b.places);
-  if(b.type === 'food') h += moveSelectHTML(b._id);
   h += '</div>';
   return h;
 }
@@ -928,26 +779,6 @@ function loadThumbnails(root){
   });
 }
 
-function dayPoints(d){
-  var pts = [];
-  d.blocks.forEach(function(b){
-    if(b.type === 'do' && b.items){
-      b.items.forEach(function(a){ if(a && typeof a === 'object' && a.name) pts.push(a.mapQuery || a.name); });
-    } else if(b.type === 'food' && b.places && b.places.length){
-      pts.push(b.places[0].q || b.places[0].name);
-    }
-  });
-  return pts;
-}
-
-function dayMapHTML(d){
-  var pts = dayPoints(d);
-  if(pts.length < 2) return '';
-  var enc = pts.map(function(p){ return encodeURIComponent(p); });
-  var src = 'https://www.google.com/maps?saddr=' + enc[0] + '&daddr=' + enc.slice(1).join('+to:') + '&dirflg=w&output=embed';
-  return '<div class="daymap"><iframe src="' + src + '" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>';
-}
-
 function renderDay(){
   var d = DAYS[selectedIndex];
   var dateObj = new Date(d.date + 'T00:00:00');
@@ -955,7 +786,6 @@ function renderDay(){
   var html = '<div class="daytitle">' + d.dow + ' ' + monthName + ' ' + dayOfMonth(d.date) + ' — ' + d.label;
   if(d.transit) html += '<span class="badge-transit">Driving day</span>';
   html += '</div>';
-  html += dayMapHTML(d);
   d.blocks.forEach(function(b){ html += blockHTML(b); });
   document.getElementById('daycontent').innerHTML = html;
   loadThumbnails(document.getElementById('daycontent'));
@@ -991,9 +821,11 @@ renderDay();
 (function(){
   var stops = [
     {label:"Home", sub:"Boulogne-Billancourt", kind:"major"},
-    {label:"AF1516 · CDG → OPO", kind:"flight"},
+    {label:"AF1470 · CDG → OPO", kind:"flight"},
     {label:"Porto", sub:"Ibis Bolhão · Jul 4–8", kind:"major"},
-    {label:"Drive ~3h + lunch", kind:"drive"},
+    {label:"Drive ~1h", kind:"drive"},
+    {label:"Aveiro", sub:"Canal boat ride", kind:"way"},
+    {label:"Drive ~2h + lunch", kind:"drive"},
     {label:"Mealhada", sub:"Leitão lunch (Fabien)", kind:"way"},
     {label:"Cascais", sub:"Airbnb · Jul 8–10", kind:"major"},
     {label:"Drive ~2h + lunch", kind:"drive"},
@@ -1120,93 +952,6 @@ renderDay();
     html += '</div></details>';
   });
   document.getElementById('emergencyLocs').innerHTML = html;
-})();
-
-// --- Retrofit static (hand-written) attraction/place markup in Quick Reference ---
-// so it gets the same checkbox + Directions link as the JS-generated day cards.
-(function(){
-  Array.prototype.forEach.call(document.querySelectorAll('.attraction'), function(el){
-    if(el.querySelector('.wentbox')) return;
-    var nameEl = el.querySelector('.aname');
-    var name = nameEl ? nameEl.textContent.trim() : '';
-    var key = 'attr-' + slug(name);
-    if(CHECKED[key]) el.classList.add('visited');
-    var cb = document.createElement('input');
-    cb.type = 'checkbox'; cb.className = 'wentbox'; cb.setAttribute('data-key', key); cb.title = 'We went here';
-    if(CHECKED[key]) cb.checked = true;
-    el.insertBefore(cb, el.firstChild);
-
-    var abody = el.querySelector('.abody');
-    if(abody){
-      var alinks = document.createElement('div');
-      alinks.className = 'alinks';
-      var mapsA = document.createElement('a');
-      mapsA.className = 'asite'; mapsA.target = '_blank'; mapsA.rel = 'noopener';
-      mapsA.href = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(name);
-      mapsA.innerHTML = icon('pin') + ' Directions';
-      alinks.appendChild(mapsA);
-      var existingLink = abody.querySelector('a.asite');
-      if(existingLink) alinks.appendChild(existingLink);
-      abody.appendChild(alinks);
-    }
-  });
-
-  Array.prototype.forEach.call(document.querySelectorAll('.placerow'), function(row){
-    Array.prototype.forEach.call(row.querySelectorAll('a.placechip'), function(a){
-      if(a.parentElement.classList.contains('placechiprow')) return;
-      var key = 'place-' + slug(a.textContent.trim());
-      var wrap = document.createElement('div');
-      wrap.className = 'placechiprow' + (CHECKED[key] ? ' visited' : '');
-      var cb = document.createElement('input');
-      cb.type = 'checkbox'; cb.className = 'wentbox'; cb.setAttribute('data-key', key); cb.title = 'We went here';
-      if(CHECKED[key]) cb.checked = true;
-      a.parentNode.insertBefore(wrap, a);
-      wrap.appendChild(cb);
-      wrap.appendChild(a);
-    });
-  });
-})();
-
-// --- Pronunciation buttons for the Phrases tab ---
-(function(){
-  var supported = ('speechSynthesis' in window);
-  Array.prototype.forEach.call(document.querySelectorAll('.phraserow .pt'), function(el){
-    var text = el.textContent.trim();
-    var span = document.createElement('span');
-    span.className = 'ptword';
-    span.textContent = text;
-    var btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'speakbtn';
-    btn.setAttribute('aria-label', 'Play pronunciation');
-    btn.innerHTML = icon('speaker');
-    if(!supported){ btn.style.display = 'none'; }
-    btn.setAttribute('data-text', text);
-    el.innerHTML = '';
-    el.appendChild(span);
-    el.appendChild(btn);
-  });
-
-  document.addEventListener('click', function(e){
-    var btn = e.target.closest ? e.target.closest('.speakbtn') : null;
-    if(!btn || !supported) return;
-    var text = btn.getAttribute('data-text');
-    try{
-      window.speechSynthesis.cancel();
-      var u = new SpeechSynthesisUtterance(text);
-      u.lang = 'pt-PT';
-      u.rate = 0.85;
-      var voices = window.speechSynthesis.getVoices();
-      var ptVoice = voices.find(function(v){ return v.lang === 'pt-PT'; })
-        || voices.find(function(v){ return v.lang && v.lang.indexOf('pt') === 0; });
-      if(ptVoice) u.voice = ptVoice;
-      Array.prototype.forEach.call(document.querySelectorAll('.speakbtn.playing'), function(b){ b.classList.remove('playing'); });
-      btn.classList.add('playing');
-      u.onend = function(){ btn.classList.remove('playing'); };
-      u.onerror = function(){ btn.classList.remove('playing'); };
-      window.speechSynthesis.speak(u);
-    }catch(err){}
-  });
 })();
 
 loadThumbnails(document);
