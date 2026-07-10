@@ -611,11 +611,11 @@ const DAYS = [
       ]},
       {type:"note", title:"Pastéis de Belém", text:"The original bakery for the famous custard tarts — expect a line, it moves fast."},
       {type:"food", title:"Meals", text:"Lunch at O Recanto or Adega de Belém. Back to Cascais for dinner — great night for your Izakaya Cascais reservation, book well ahead. [FABIEN]", places:[{name:"O Recanto", q:"O Recanto Belem Lisboa"},{name:"Adega de Belém", q:"Adega de Belem Lisboa"},{name:"Izakaya Cascais", q:"Izakaya Cascais"}]},
-      {type:"do", title:"If you have time: Baixa", text:"Downtown Lisbon, a bit east of Belém — worth it only if lunch runs early and you're not rushing back for Izakaya. Skip it rather than cut Belém short.", items:[
-        {name:"Praça do Comércio", note:"Grand riverside square, yellow arcaded buildings opening onto the Tagus. Climb the Arco da Rua Augusta for a rooftop view.", wiki:"Praça do Comércio"},
-        {name:"Rua Augusta", note:"Pedestrian street up to Rossio, shops and street performers, easy flat walking with a kid.", wiki:"Rua Augusta"},
-        {name:"Rossio Square", note:"Wave-pattern cobblestones, the National Theatre, classic café-square energy.", wiki:"Rossio"},
-        {name:"Elevador de Santa Justa", note:"Ornate cast-iron lift up to Bairro Alto. The lift line gets long — the viewing platform at top is the real payoff.", wiki:"Santa Justa Lift"}
+      {type:"do", title:"If you have time: Baixa", text:"Downtown Lisbon, a bit east of Belém — worth it only if lunch runs early and you're not rushing back for Izakaya. Skip it rather than cut Belém short. Doesn't fit today? There's no other day in this trip close enough to Lisbon to slot it into — Gaia (Jul 12) is too far. Your best alternative is folding it into the optional second Lisbon day in Quick ref, if you end up adding a night to Cascais.", items:[
+        {name:"Praça do Comércio", note:"Grand riverside square, yellow arcaded buildings opening onto the Tagus. Climb the Arco da Rua Augusta for a rooftop view.", wiki:"Praça do Comércio", mapQ:"Praca do Comercio Lisboa"},
+        {name:"Rua Augusta", note:"Pedestrian street up to Rossio, shops and street performers, easy flat walking with a kid.", wiki:"Rua Augusta", mapQ:"Rua Augusta Lisboa"},
+        {name:"Rossio Square", note:"Wave-pattern cobblestones, the National Theatre, classic café-square energy.", wiki:"Rossio", mapQ:"Rossio Square Lisboa"},
+        {name:"Elevador de Santa Justa", note:"Ornate cast-iron lift up to Bairro Alto. The lift line gets long — the viewing platform at top is the real payoff.", wiki:"Santa Justa Lift", mapQ:"Elevador de Santa Justa Lisboa"}
       ]},
       {type:"note", title:"Extending?", text:"If you add a second Lisbon day, swap this for the Alfama/Castelo/Oceanário day in Quick ref."}
     ]
@@ -704,7 +704,10 @@ function attractionHTML(a){
   h += '<div class="aname">' + a.name + '</div>';
   if(a.note) h += '<div class="anote">' + fmtLine(a.note) + '</div>';
   if(a.dog) h += '<span class="dognote">' + a.dog + '</span><br>';
-  if(a.url) h += '<a class="asite" href="' + a.url + '" target="_blank" rel="noopener">' + icon('link') + ' More info / tickets</a>';
+  var links = [];
+  if(a.url) links.push('<a class="asite" href="' + a.url + '" target="_blank" rel="noopener">' + icon('link') + ' More info / tickets</a>');
+  if(a.mapQ) links.push('<a class="asite" href="https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(a.mapQ) + '" target="_blank" rel="noopener">' + icon('pin') + ' Map</a>');
+  if(links.length) h += links.join(' &middot; ');
   h += '</div></div>';
   return h;
 }
